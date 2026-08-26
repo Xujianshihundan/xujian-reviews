@@ -52,6 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 
-  console.log('%c😤 许健点评墙', 'font-size:24px;font-weight:bold;color:#ff6b6b');
-  console.log('%c本站内容纯属虚构恶搞，请勿对号入座。', 'color:#ffd166');
+  console.log('%c🚨 许健·渣男点评墙 (Code Review 专栏)', 'font-size:24px;font-weight:bold;color:#ff4757');
+  console.log('%c本站所有"网恋对象"及点评内容均为虚构恶搞，请勿对号入座。', 'color:#ffa502');
 });
