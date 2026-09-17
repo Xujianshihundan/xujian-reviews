@@ -261,9 +261,170 @@ code {
 }
 
 .review-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.review-foot .tags {
   font-size: 13px;
   color: var(--accent);
   opacity: 0.9;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* 顶部音频收听提示条 */
+.audio-tip-banner {
+  background: linear-gradient(90deg, rgba(255, 71, 87, 0.18), rgba(255, 165, 2, 0.15));
+  border: 1px solid rgba(255, 165, 2, 0.35);
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.audio-tip-banner .tip-icon {
+  font-size: 20px;
+  animation: pulse-icon 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-icon {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15) rotate(5deg); }
+}
+
+/* 卡片指针与播放中高亮 */
+.review {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.review.playing {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 30px rgba(255, 165, 2, 0.35), 0 8px 24px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #331919, #241414);
+}
+
+/* 狡辩播放按钮 */
+.rebuttal-btn {
+  background: linear-gradient(135deg, rgba(255, 71, 87, 0.2), rgba(255, 165, 2, 0.2));
+  border: 1px solid rgba(255, 165, 2, 0.5);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.rebuttal-btn:hover {
+  background: linear-gradient(135deg, var(--danger), var(--accent-2));
+  color: #140d0d;
+  box-shadow: 0 0 12px rgba(255, 165, 2, 0.5);
+  transform: translateY(-1px);
+}
+
+.review.playing .rebuttal-btn {
+  background: linear-gradient(135deg, var(--danger), var(--accent-2));
+  color: #140d0d;
+  box-shadow: 0 0 15px rgba(255, 71, 87, 0.6);
+  border-color: #ffeaa7;
+}
+
+/* 声波动画小条 */
+.btn-wave {
+  display: none;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.review.playing .btn-wave {
+  display: flex;
+}
+
+.btn-wave i {
+  display: inline-block;
+  width: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  animation: wave 0.8s infinite ease-in-out alternate;
+}
+
+.btn-wave i:nth-child(1) { height: 4px; animation-delay: 0.1s; }
+.btn-wave i:nth-child(2) { height: 10px; animation-delay: 0.3s; }
+.btn-wave i:nth-child(3) { height: 6px; animation-delay: 0.2s; }
+
+@keyframes wave {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+/* 狡辩对话框 */
+.rebuttal-box {
+  margin-top: 14px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 165, 2, 0.25);
+  border-left: 3px solid var(--accent-2);
+  border-radius: 8px;
+  padding: 12px 14px;
+  transition: all 0.3s ease;
+}
+
+.review.playing .rebuttal-box {
+  background: rgba(255, 165, 2, 0.08);
+  border-color: rgba(255, 165, 2, 0.6);
+  border-left-width: 4px;
+  box-shadow: inset 0 0 15px rgba(255, 165, 2, 0.1);
+}
+
+.rebuttal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.rebuttal-speaker {
+  font-weight: 800;
+  color: var(--accent-2);
+  letter-spacing: 0.5px;
+}
+
+.rebuttal-status {
+  color: var(--text-soft);
+  font-size: 11px;
+}
+
+.review.playing .rebuttal-status {
+  color: #ff6b81;
+  font-weight: 700;
+}
+
+.rebuttal-text {
+  font-size: 13.5px !important;
+  color: #ffeaa7 !important;
+  font-style: italic;
+  margin-bottom: 0 !important;
+  line-height: 1.6 !important;
 }
 
 /* ===== 评分汇总 ===== */
