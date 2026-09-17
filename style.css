@@ -377,22 +377,44 @@ code {
   100% { height: 12px; }
 }
 
-/* 狡辩对话框 */
+/* 狡辩对话框 - 默认隐藏，点击听狡辩后丝滑展开 */
 .rebuttal-box {
-  margin-top: 14px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 165, 2, 0.25);
-  border-left: 3px solid var(--accent-2);
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid transparent;
+  border-left: 3px solid transparent;
   border-radius: 8px;
+  padding: 0 14px;
+  transform: translateY(-8px);
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              padding 0.35s ease,
+              margin-top 0.35s ease,
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* 点击听狡辩后永久解锁展示 (revealed) 或播放中 (playing) 展开 */
+.review.revealed .rebuttal-box,
+.review.playing .rebuttal-box {
+  margin-top: 14px;
+  max-height: 260px;
+  opacity: 1;
   padding: 12px 14px;
-  transition: all 0.3s ease;
+  border-color: rgba(255, 165, 2, 0.35);
+  border-left-color: var(--accent-2);
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .review.playing .rebuttal-box {
-  background: rgba(255, 165, 2, 0.08);
-  border-color: rgba(255, 165, 2, 0.6);
+  background: rgba(255, 165, 2, 0.09);
+  border-color: rgba(255, 165, 2, 0.65);
   border-left-width: 4px;
-  box-shadow: inset 0 0 15px rgba(255, 165, 2, 0.1);
+  box-shadow: inset 0 0 15px rgba(255, 165, 2, 0.12);
 }
 
 .rebuttal-head {

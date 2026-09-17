@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentAudio = audio;
       activeReview = card;
 
+      card.classList.add('revealed');
       card.classList.add('playing');
       const btnText = card.querySelector('.btn-text');
       const statusText = card.querySelector('.rebuttal-status');
